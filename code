@@ -1,0 +1,37 @@
+weather_data = {
+    'January': {'temperature':27, 'daylight_hours': 11.30},
+    'February': {'temperature':30, 'daylight_hours': 10.30}
+    'March': {'temperature':39, 'daylight_hours': 12},
+    'April': {'temperature':49, 'daylight_hours': 13.30}
+    'May': {'temperature':59, 'daylight_hours': 14.30},
+    'June': {'temperature':70, 'daylight_hours': 15}
+    'July': {'temperature':76, 'daylight_hours': 14.45},
+    'August': {'temperature':75, 'daylight_hours': 14}
+    'September': {'temperature':67, 'daylight_hours': 12.30},
+    'October': {'temperature':55, 'daylight_hours': 11}
+    'November': {'temperature':43, 'daylight_hours': 9.45},
+    'December': {'temperature': 32, 'daylight_hours': 9.15}
+}
+
+
+def get_weather_data(month):
+return weather_data.get(month, none)
+
+
+while True:
+    user_input = input("Ask me about the weather in a certain month (e.g., 'What's the weather in May?'): ")
+    user_input = user_input.strip().capitalize()  # Normalize user input
+    if user_input == 'Quit':
+        break
+    elif user_input.startswith("What's the weather in "):
+        month = user_input[21:-1]  # Extract the month
+        weather_data = get_weather_data(month)
+        if weather_data:
+            temperature = weather_data['temperature']
+            daylight_hours = weather_data['daylight_hours']
+            print(f"Average temperature in {month}: {temperature}°C")
+            print(f"Average daylight hours in {month}: {daylight_hours} hours")
+        else:
+            print(f"Sorry, I don't have data for {month}.")
+    else:
+        print("I'm not sure how to answer that. Please ask about the weather in a specific month or type 'quit' to exit.")
